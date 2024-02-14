@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -12,16 +14,19 @@ export class LoginComponent {
   password: string = '';
   loginValid = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private snackbarService: SnackbarService, private router: Router, private authService: AuthService) { }
 
   login(): void {
     this.authService.login(this.username, this.password).subscribe({
       next: (token: string) => {
         this.loginValid = true;
-        localStorage.setItem('GiftyJWT', token)
+        localStorage.setItem('GiftyJWT', token);
+        this.router.navigate(['/main']);
       },
-      error: () => {
+      error: (err) => {
         this.loginValid = false;
+        this.snackbarService.showError('Login Failed: ' + err.error)
+        console.log(err);
       }
     });
   }

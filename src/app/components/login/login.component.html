@@ -1,10 +1,7 @@
 <mat-card>
     <mat-card-content>
       <form #loginForm="ngForm" (ngSubmit)="login()">
-        <h2>Gifty Log In</h2>
-        <mat-error *ngIf="!loginValid">
-          The username or password were not recognized
-        </mat-error>
+        <h2>Welcome to Gifty</h2>
         <mat-form-field>
           <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
           <mat-error>
@@ -20,4 +17,4 @@
         <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid">LOGIN</button>
       </form>
     </mat-card-content>
-  </mat-card>
+</mat-card>

@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -28,6 +28,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
+import { OkSnackbarComponent } from './components/ok-snackbar/ok-snackbar.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -41,7 +43,9 @@ export function jwtOptionsFactory() {
     MainLayoutComponent,
     LoginComponent,
     ResetPasswordComponent,
-    WishlistsComponent
+    WishlistsComponent,
+    ErrorSnackbarComponent,
+    OkSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,8 @@ export function jwtOptionsFactory() {
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [
     {
