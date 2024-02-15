@@ -10,23 +10,26 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  loginValid = true;
-
   constructor(private snackbarService: SnackbarService, private router: Router, private authService: AuthService) { }
 
+  email: string = '';
+  password: string = '';
+  isLoading: boolean = false;
+  
   login(): void {
-    this.authService.login(this.username, this.password).subscribe({
+    this.isLoading = true;
+
+    this.authService.login(this.email, this.password).subscribe({
       next: (token: string) => {
-        this.loginValid = true;
+        this.isLoading = false;
         localStorage.setItem('GiftyJWT', token);
         this.router.navigate(['/main']);
       },
-      error: (err) => {
-        this.loginValid = false;
-        this.snackbarService.showError('Login Failed: ' + err.error)
-        console.log(err);
+      error: (error) => {
+        this.isLoading = false;
+        this.snackbarService.showError(error);
+        this.email = '';
+        this.password = '';
       }
     });
   }

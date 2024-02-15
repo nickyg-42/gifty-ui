@@ -1,0 +1,60 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<mat-card class="main-card">
+    <mat-card-content>
+      <form #loginForm="ngForm" (ngSubmit)="register()">
+        <h1>Create Account</h1>
+        <div class="form-fields">
+            <mat-form-field>
+                <label>First Name:</label>
+                <input matInput [(ngModel)]="firstName" name="firstName" required>
+                <mat-error>
+                    Please provide a valid name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Last Name:</label>
+                <input matInput [(ngModel)]="lastName" name="lastName" required>
+                <mat-error>
+                    Please provide a valid name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Email:</label>
+                <input matInput type="email" [(ngModel)]="email" name="email" required>
+                <mat-error>
+                    Please provide a valid email
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Birth Date:</label>
+                <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" [(ngModel)]="birthday" name="birthdate" required>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>
+                    Please provide a valid birth date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Password:</label>
+                <input type="password" matInput type="password" [(ngModel)]="password" name="password" required>
+                <mat-error>
+                    Please provide a valid password
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Re-type Password:</label>
+                <input type="password" matInput type="password" [(ngModel)]="passwordRetype" name="passwordRetype" required>
+                <mat-error>
+                    Please provide a valid password
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="!loginForm.form.valid"><mat-icon>add</mat-icon>CREATE ACCOUNT</button>
+      </form>
+    </mat-card-content>
+</mat-card>
+<mat-card class="back-card">
+    <mat-card-content>
+        <button class="back-btn" mat-raised-button color="primary" [routerLink]="['/login']"><mat-icon>navigate_before</mat-icon>Go Back</button>
+    </mat-card-content>
+</mat-card>

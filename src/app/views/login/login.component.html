@@ -1,0 +1,29 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<mat-card class="main-card">
+    <mat-card-content>
+      <form #loginForm="ngForm" (ngSubmit)="login()">
+        <h1>Welcome to Gifty</h1>
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+          <mat-error>
+            Please provide a valid email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="!loginForm.form.valid"><mat-icon>login</mat-icon>LOGIN</button>
+      </form>
+    </mat-card-content>
+</mat-card>
+<mat-card class="options-card">
+  <mat-card-content>
+    <div class="options">
+      <button mat-raised-button color="primary" [routerLink]="['/register']" class="register-btn"><mat-icon>person_add</mat-icon>Register</button>
+      <button mat-raised-button color="primary" [routerLink]="['/reset-password']"><mat-icon>lock</mat-icon>Forgot Password</button>
+    </div>
+  </mat-card-content>
+</mat-card>

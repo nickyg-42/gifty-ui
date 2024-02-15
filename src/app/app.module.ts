@@ -6,10 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { MainLayoutComponent } from './components/main-layout/main-layout.component';
-import { LoginComponent } from './components/login/login.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { WishlistsComponent } from './components/wishlists/wishlists.component';
+import { MainLayoutComponent } from './views/main-layout/main-layout.component';
+import { LoginComponent } from './views/login/login.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { WishlistsComponent } from './views/wishlists/wishlists.component';
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,6 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
 import { OkSnackbarComponent } from './components/ok-snackbar/ok-snackbar.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { RegisterComponent } from './views/register/register.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -45,7 +47,9 @@ export function jwtOptionsFactory() {
     ResetPasswordComponent,
     WishlistsComponent,
     ErrorSnackbarComponent,
-    OkSnackbarComponent
+    OkSnackbarComponent,
+    LoadingSpinnerComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

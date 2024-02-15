@@ -1,0 +1,66 @@
+mat-card {
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgba(44, 44, 44, 0.9);
+    margin: 2em auto;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main-card {
+  margin-top: 130px;
+  max-width: 800px;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 10px;
+  opacity: .6;
+  min-width: 375px;
+}
+
+button {
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 20px 45px;
+}
+
+.submit-btn {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-btn {
+  margin-bottom: 15px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+}
+
+.back-card {
+    max-width: 200px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.back-btn {
+    max-width: 500px;
+    padding-right: 40px;
+    padding-left: 30px;
+}
