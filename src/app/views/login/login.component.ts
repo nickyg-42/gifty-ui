@@ -27,7 +27,7 @@ export class LoginComponent {
       },
       error: (error) => {
         this.isLoading = false;
-        this.snackbarService.showError(error);
+        this.snackbarService.showErrorObject(error);
         this.email = '';
         this.password = '';
       }

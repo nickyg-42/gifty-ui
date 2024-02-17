@@ -1,0 +1,57 @@
+.main-card {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(44, 44, 44, 0.9);
+    border-radius: 20px;
+    max-height: 70px;
+    // justify-content: space-between;
+    // align-items: center;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    color: white; 
+    margin-top: 0px
+}
+
+.right {
+    margin-left: auto;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+    height: 35px;
+}
+
+.large-button {
+    font-size:30px;
+}
+
+.text-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    margin-right: 40px;
+    height: 37px;
+}
+
+.current {
+    color: #42d3b1;
+}
+
+.mat-divider.mat-divider-vertical {
+    margin-left: 30px;
+    margin-right: 30px;
+    border-right-width: 2px;
+    height: 40px;
+    border-top-color: white;
+}
+  

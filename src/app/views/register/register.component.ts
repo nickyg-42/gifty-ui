@@ -20,10 +20,16 @@ export class RegisterComponent {
   password: string = '';
   birthday: Date | null = null;
   passwordRetype: string = '';
+  passwordsMismatch: boolean = true;
   
   user: User = new User();
 
   register(): void {
+    if (this.passwordRetype !== this.password) {
+      this.snackbarService.showErrorMessage('Error: Passwords do not match');
+      return;
+    }
+
     this.isLoading = true;
 
     this.user.birthday = this.birthday;
@@ -40,14 +46,15 @@ export class RegisterComponent {
       },
       error: (error) => {
         this.isLoading = false;
-        this.snackbarService.showError(error);
+        this.snackbarService.showErrorObject(error);
 
         this.firstName = '';
         this.lastName = '';
         this.email = '';
         this.password = '';
         this.birthday = null;
+        this.passwordRetype = '';
       }
-  });
+    });
   }
 }

@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { MainLayoutComponent } from './views/main-layout/main-layout.component';
 import { LoginComponent } from './views/login/login.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 import { WishlistsComponent } from './views/wishlists/wishlists.component';
@@ -32,6 +31,11 @@ import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackb
 import { OkSnackbarComponent } from './components/ok-snackbar/ok-snackbar.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { RegisterComponent } from './views/register/register.component';
+import { NumberRestricDirective } from './validation/number-restrict.directive';
+import { EmailRestrictDirective } from './validation/email-restrict.directive';
+import { LetterRestrictDirective } from './validation/letter-restrict.directive';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { MyListsComponent } from './views/my-lists/my-lists.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -42,14 +46,18 @@ export function jwtOptionsFactory() {
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent,
     LoginComponent,
     ResetPasswordComponent,
     WishlistsComponent,
     ErrorSnackbarComponent,
     OkSnackbarComponent,
     LoadingSpinnerComponent,
-    RegisterComponent
+    RegisterComponent,
+    NumberRestricDirective,
+    EmailRestrictDirective,
+    LetterRestrictDirective,
+    TopNavbarComponent,
+    MyListsComponent
   ],
   imports: [
     BrowserModule,
