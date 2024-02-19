@@ -5,13 +5,12 @@
     background-color: rgba(44, 44, 44, 0.9);
     border-radius: 20px;
     max-height: 70px;
-    // justify-content: space-between;
-    // align-items: center;
 }
 
 .main-content {
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
 }
 
 h1 {

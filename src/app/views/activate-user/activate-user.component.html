@@ -1,0 +1,29 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<mat-card class="main-card">
+    <mat-card-content>
+      <form #loginForm="ngForm" (ngSubmit)="activate()">
+        <h1>Activate Account</h1>
+        <h3>Please check your email for instructions</h3>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+            <mat-error>
+              Please provide a valid email
+            </mat-error>
+          </mat-form-field>
+        <mat-form-field>
+          <mat-label>Activation Code</mat-label>
+          <input type="text" matInput placeholder="Code" [(ngModel)]="activationCode" name="activationCode" required>
+          <mat-error>
+            Please provide a valid code
+          </mat-error>
+        </mat-form-field>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="!loginForm.form.valid"><mat-icon>inbox</mat-icon>ACTIVATE ACCOUNT</button>
+      </form>
+    </mat-card-content>
+</mat-card>
+<mat-card class="back-card">
+    <mat-card-content>
+        <button class="back-btn" mat-raised-button color="primary" [routerLink]="['/login']"><mat-icon>navigate_before</mat-icon>Go Back</button>
+    </mat-card-content>
+</mat-card>

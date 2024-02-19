@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User, UserRole } from 'src/app/models/User';
 
 @Component({
   selector: 'app-top-navbar',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class TopNavbarComponent {
   constructor() {}
-  
+
   isCurrentPage(page: string): boolean {
     const href: string = window.location.href;
 

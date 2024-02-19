@@ -1,0 +1,5 @@
+<div class="main">
+    <button class="text-button" (click)="this.dialogRef.close()"><mat-icon>close</mat-icon></button>
+    <p>Are you sure you want to delete <span style="font-weight: bold; color:#42d3b1;">{{this.data}}</span>?</p>
+    <button class="submit-btn" (click)="confirm()" mat-raised-button color="primary"><mat-icon>done_all</mat-icon>CONFIRM</button>
+</div>

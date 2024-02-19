@@ -7,8 +7,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LoginComponent } from './views/login/login.component';
-import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
-import { WishlistsComponent } from './views/wishlists/wishlists.component';
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,6 +34,13 @@ import { EmailRestrictDirective } from './validation/email-restrict.directive';
 import { LetterRestrictDirective } from './validation/letter-restrict.directive';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { MyListsComponent } from './views/my-lists/my-lists.component';
+import { GroupsComponent } from './views/groups/groups.component';
+import { ClaimedItemsComponent } from './views/claimed-items/claimed-items.component';
+import { FriendsComponent } from './views/friends/friends.component';
+import { ActivateUserComponent } from './views/activate-user/activate-user.component';
+import { CreateWishlistComponent } from './components/create-wishlist/create-wishlist.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
+import { ViewWishlistComponent } from './views/view-wishlist/view-wishlist.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -47,8 +52,6 @@ export function jwtOptionsFactory() {
   declarations: [
     AppComponent,
     LoginComponent,
-    ResetPasswordComponent,
-    WishlistsComponent,
     ErrorSnackbarComponent,
     OkSnackbarComponent,
     LoadingSpinnerComponent,
@@ -57,7 +60,14 @@ export function jwtOptionsFactory() {
     EmailRestrictDirective,
     LetterRestrictDirective,
     TopNavbarComponent,
-    MyListsComponent
+    MyListsComponent,
+    GroupsComponent,
+    ClaimedItemsComponent,
+    FriendsComponent,
+    ActivateUserComponent,
+    CreateWishlistComponent,
+    DeleteConfirmComponent,
+    ViewWishlistComponent
   ],
   imports: [
     BrowserModule,

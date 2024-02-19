@@ -31,15 +31,19 @@ h1 {
   color: white;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
+.back-card {
+    max-width: 200px;
+    text-align: center;
+    border-radius: 50px;
 }
 
-.register-btn {
-  margin-bottom: 15px;
+.back-btn {
+    max-width: 500px;
+    padding-right: 40px;
+    padding-left: 30px;
 }
 
-.options-card {
-  max-width: 300px;
+h3 {
+    color: rgba(184, 181, 181, 0.936);
+    margin-bottom: 30px;
 }

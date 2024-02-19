@@ -13,6 +13,7 @@ export class User {
     role: UserRole = UserRole.Member;
     isActive: boolean = false;
     createdDateTime: Date = new Date();
+    activationString: string = '';
 }
 
 export enum UserRole {
