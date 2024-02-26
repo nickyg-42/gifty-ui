@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="login.component.scss">
+</head>
+<body>
+
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <mat-card class="main-card">
     <mat-card-content>
       <form #loginForm="ngForm" (ngSubmit)="login()">
-        <h1>Welcome to Gifty</h1>
+        <h1 class="pop-in">Welcome to Gifty</h1>
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input type="email" matInput placeholder="Email" [(ngModel)]="email" name="email" required>
@@ -29,3 +36,6 @@
     </div>
   </mat-card-content>
 </mat-card>
+
+</body>
+</html>
