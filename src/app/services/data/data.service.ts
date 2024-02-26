@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Wishlist } from 'src/app/models/Wishlist';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +6,13 @@ import { Wishlist } from 'src/app/models/Wishlist';
 export class DataService {
   constructor() { }
 
-  private currentWishlist?: Wishlist;
-  
-  setCurrentWishlist(data: Wishlist): void {
-    this.currentWishlist = data;
+  private cachedData: Map<string, any> = new Map<string, any>();
+
+  getData(key: string): any {
+    return this.cachedData.get(key);
   }
 
-  getCurrentWishlist(): any {
-    return this.currentWishlist;
+  setData(key: string, data: any): void {
+    this.cachedData.set(key, data);
   }
 }

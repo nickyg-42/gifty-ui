@@ -34,26 +34,43 @@ export class MyListsComponent {
   ngOnInit(): void {
     this.isLoading = true;
 
-    this.userService.getUserByEmail(this.authService.getUserEmailFromJWT()).subscribe({
-      next: (data: User) => {
-        this.user = data;
+    if (this.dataService.getData("currentUser")) {
+      this.user = this.dataService.getData("currentUser");
+      this.isLoading = false;
+      this.getUserWishlists();
+    } else {
+      this.userService.getUserByEmail(this.authService.getUserEmailFromJWT()).subscribe({
+        next: (data: User) => {
+          this.user = data;
+          
+          this.dataService.setData("currentUser", data);
+          this.getUserWishlists();
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.snackbarService.showErrorObject(error);
+        }
+      });
+    }
+  }
 
-        this.wishlistService.getWishlistsByOwner(this.user.email).subscribe({
-          next: (data: Wishlist[]) => {
-            this.isLoading = false;
-            this.wishlists = data;
-          },
-          error: (error) => {
-            this.isLoading = false;
-            this.snackbarService.showErrorObject(error);
-          }
-        });
-      },
-      error: (error) => {
-        this.isLoading = false;
-        this.snackbarService.showErrorObject(error);
-      }
-    });
+  getUserWishlists(): void {
+    if (this.dataService.getData("allWishlistsForUser")) {
+      this.wishlists = this.dataService.getData("allWishlistsForUser");
+      this.isLoading = false;
+    } else {
+      this.wishlistService.getWishlistsByOwner(this.user.email).subscribe({
+        next: (data: Wishlist[]) => {
+          this.isLoading = false;
+          this.wishlists = data;
+          this.dataService.setData("allWishlistsForUser", data);
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.snackbarService.showErrorObject(error);
+        }
+      });
+    }
   }
 
   createList(): void {
@@ -64,12 +81,15 @@ export class MyListsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === "ok") this.ngOnInit();
+      if (result === "ok") {
+        this.dataService.setData("allWishlistsForUser", null);
+        this.ngOnInit();
+      }
     });
   }
 
   viewList(wishlist: Wishlist): void {
-    this.dataService.setCurrentWishlist(wishlist);
+    this.dataService.setData("currentWishlist", wishlist);
     this.router.navigate(['/my-lists', wishlist.id]);
   }
 
@@ -85,6 +105,7 @@ export class MyListsComponent {
         this.wishlistService.deleteWishlist(wishlist.id!).subscribe({
           next: () => {
             this.snackbarService.showOk("Wishlist deleted successfully");
+            this.dataService.setData("allWishlistsForUser", null);
             this.ngOnInit();
           },
           error: (error) => {

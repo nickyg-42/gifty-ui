@@ -1,1 +1,30 @@
-<p>view-wishlist works! {{currentWishlist.listName}}</p>
+<app-top-navbar></app-top-navbar>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<mat-card class="main-card">
+    <mat-card-content>
+        <h1>{{currentWishlist.listName}}</h1>
+        <h2>{{currentWishlist.listDescription}}</h2>
+        <h3>Items</h3>
+        <div class="wishlists">
+            <div class="wishlist">
+                <mat-card class="list-card">
+                    <mat-card-content>
+                        <button class="text-button" (click)="addItem()"><mat-icon>add_circle</mat-icon></button>
+                    </mat-card-content>
+                </mat-card>
+                <p class="create-list">Add Item</p>
+            </div>
+            <div class="wishlist" *ngFor="let item of currentWishlist.items">
+                <mat-card class="list-card">
+                    <mat-card-content class="list-content">
+                        <button class="text-button" (click)="viewItem(item)"><mat-icon class="edit">edit</mat-icon></button>
+                        <button class="text-button-trash" (click)="deleteItem(item)"><mat-icon class="trash">delete</mat-icon></button>
+                        <!-- Maybe put pictures here? -->
+                    </mat-card-content>
+                </mat-card>
+                <p class="list-name">{{item}}</p>
+                <p class="wish-count">{{"$" + item}}</p>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
