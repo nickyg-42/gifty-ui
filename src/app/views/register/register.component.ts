@@ -33,16 +33,16 @@ export class RegisterComponent {
     this.isLoading = true;
 
     this.user.birthday = this.birthday;
-    this.user.firstName = this.firstName;
-    this.user.lastName = this.lastName;
-    this.user.email = this.email;
+    this.user.firstName = this.camelCaseString(this.firstName);
+    this.user.lastName = this.camelCaseString(this.lastName);
+    this.user.email = this.email.toLowerCase();
     this.user.passwordHash = this.password;
 
     this.authService.register(this.user).subscribe({
       next: () => {
         this.isLoading = false;
         this.router.navigate(['/login']);
-        this.snackbarService.showOk('Account Created Successfully! You can now Login');
+        this.snackbarService.showOk('Account Created Successfully! Check your email to activate it');
       },
       error: (error) => {
         this.isLoading = false;
@@ -56,5 +56,14 @@ export class RegisterComponent {
         this.passwordRetype = '';
       }
     });
+  }
+
+  camelCaseString(str: any): any {
+    if (!str) return null;
+    if (str.length === 0) {
+      return str;
+    } else {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
   }
 }

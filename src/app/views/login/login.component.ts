@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
@@ -23,7 +24,7 @@ export class LoginComponent {
       next: (token: string) => {
         this.isLoading = false;
         localStorage.setItem('GiftyJWT', token);
-        this.router.navigate(['/main']);
+        this.router.navigate(['/my-lists']);
       },
       error: (error) => {
         this.isLoading = false;

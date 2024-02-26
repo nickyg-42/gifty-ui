@@ -1,0 +1,110 @@
+.main-card {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(44, 44, 44, 0.9);
+    border-radius: 20px;
+    min-height: 785px;
+}
+
+h1 {
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: rgba(210, 208, 208, 0.928);
+    font-size: 15px;
+    text-align: center;
+}
+
+.wishlists {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.list-card {
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 250px;
+    height: 150px;
+}
+
+.text-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    margin-left: 48px;
+    margin-top: 5px;
+}
+
+.text-button-trash {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+mat-icon {
+    font-size: 50px;
+    padding: 30px;
+    color: #42d3b1;
+}
+
+.edit {
+    //color: #1e1b4b !important;
+}
+
+.trash {
+    font-size: 30px;
+    padding: 3px;
+    //color: #1e1b4b
+}
+
+h3 {
+    color: white;
+    font-size: 20px;
+    margin-left: 25px;
+    margin-top: 45px;
+    margin-bottom: 0px;
+}
+
+.create-list {
+    color: rgba(179, 174, 174, 0.91);
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.list-name {
+    margin-top: 5px;
+    color: white;
+    margin-left: 30px;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+.wish-count {
+    color: rgba(179, 174, 174, 0.91);
+    margin-left: 30px;
+    font-size: 14px;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.list-content {
+    display: flex;
+    flex-direction: row;
+}

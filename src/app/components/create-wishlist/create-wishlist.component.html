@@ -1,0 +1,22 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<div class="main">
+    <button class="text-button" (click)="this.dialogRef.close()"><mat-icon>close</mat-icon></button>
+    <h1>Create Wishlist</h1>
+    <form #loginForm="ngForm" (ngSubmit)="createWishlist()">
+        <mat-form-field>
+            <mat-label>Wishlist Name</mat-label>
+            <input type="text" matInput placeholder="Name" [(ngModel)]="listName" name="wishlistName" required>
+            <mat-error>
+              Please provide a valid name
+            </mat-error>
+          </mat-form-field>
+        <mat-form-field>
+          <mat-label>Wishlist Description</mat-label>
+          <input type="text" matInput placeholder="Description" [(ngModel)]="listDescription" name="listDescription" required>
+          <mat-error>
+            Please provide a valid description
+          </mat-error>
+        </mat-form-field>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="!loginForm.form.valid"><mat-icon>add</mat-icon>CREATE WISHLIST</button>
+      </form>
+</div>
