@@ -1,0 +1,60 @@
+.main {
+    margin: 2em auto;
+    text-align: center;
+    max-width: 400px;
+}
+
+.main-card {
+  margin-top: 130px;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 10px;
+  opacity: .5;
+}
+
+button {
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 20px 45px;
+}
+
+.submit-btn {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+}
+
+.text-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #42d3b1;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 0;
+}
+
+mat-icon {
+  font-size: 30px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-label {
+    align-self:flex-start;
+    color: rgba(199, 191, 191, 0.687);
+}
+
+.slider-elem {
+    margin-bottom: 15px;
+}

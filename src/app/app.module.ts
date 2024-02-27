@@ -41,6 +41,8 @@ import { ActivateUserComponent } from './views/activate-user/activate-user.compo
 import { CreateWishlistComponent } from './components/create-wishlist/create-wishlist.component';
 import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { ViewWishlistComponent } from './views/view-wishlist/view-wishlist.component';
+import { CreateItemComponent } from './components/create-item/create-item.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 export function jwtOptionsFactory() {
   return {
@@ -67,7 +69,8 @@ export function jwtOptionsFactory() {
     ActivateUserComponent,
     CreateWishlistComponent,
     DeleteConfirmComponent,
-    ViewWishlistComponent
+    ViewWishlistComponent,
+    CreateItemComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,8 @@ export function jwtOptionsFactory() {
     MatNativeDateModule,
     MatIconModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSliderModule
   ],
   providers: [
     {

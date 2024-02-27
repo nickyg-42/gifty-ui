@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from 'src/app/config';
+import { Item } from 'src/app/models/Item';
 import { Wishlist } from 'src/app/models/Wishlist';
 
 @Injectable({
@@ -36,8 +37,18 @@ export class WishlistService {
     return this.http.put(url, updatedWishlist);
   }
 
+  addItem(wishlistId: string, item: Item): Observable<any> {
+    const url = `${this.apiUrl}/item/${wishlistId}`;
+    return this.http.put(url, item);
+  }
+
   deleteWishlist(wishlistId: string): Observable<any> {
     const url = `${this.apiUrl}/${wishlistId}`;
+    return this.http.delete(url);
+  }
+
+  deleteItem(wishlistId: string, itemId: number): Observable<any> {
+    const url = `${this.apiUrl}/item/${wishlistId}/${itemId}`;
     return this.http.delete(url);
   }
 }
