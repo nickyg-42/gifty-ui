@@ -5,6 +5,24 @@
     background-color: rgba(44, 44, 44, 0.9);
     border-radius: 20px;
     max-height: 70px;
+    width: 100vw;
+}
+
+.right-card {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: rgba(44, 44, 44, 0.9);
+    border-radius: 20px;
+    max-height: 70px;
+}
+
+.right-card-extended {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: rgba(44, 44, 44, 0.9);
+    border-radius: 20px;
+    max-height: 70px;
+    width: 50vw;
 }
 
 .main-content {
@@ -19,12 +37,14 @@ h1 {
 }
 
 .right {
-    margin-left: auto;
+    //margin-left: auto;
     border: none;
     background: none;
     cursor: pointer;
     color: white;
     height: 35px;
+    padding-right: 10px;
+    padding-left: 0px;
 }
 
 .large-button {
@@ -42,6 +62,18 @@ h1 {
     height: 37px;
 }
 
+.text-button-close {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: #42d3b1;
+    padding-top: 7px;
+    position: absolute;
+    right: 15px;
+}
+
 .current {
     color: #42d3b1;
 }
@@ -53,4 +85,9 @@ h1 {
     height: 40px;
     border-top-color: white;
 }
-  
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
