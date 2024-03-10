@@ -1,13 +1,28 @@
-<mat-card class="main-card">
-    <mat-card-content class="main-content">
-        <h1>Gifty</h1>
-        <mat-divider vertical></mat-divider>
-        <button [class.current]="isCurrentPage('my-lists')" [routerLink]="['/my-lists']" class="text-button">My Lists</button>
-        <button [class.current]="isCurrentPage('claimed-items')" [routerLink]="['/claimed-items']" class="text-button">Claimed Items</button>
-        <button [class.current]="isCurrentPage('groups')" [routerLink]="['/groups']" class="text-button">Groups</button>
-        <button [class.current]="isCurrentPage('friends')" [routerLink]="['/friends']" class="text-button">Friends</button>
-        <button class="right">
-            <mat-icon class="large-button">menu</mat-icon>
-        </button>
-    </mat-card-content>
-</mat-card>
+<div class="top-nav">
+    <mat-card class="main-card">
+        <mat-card-content class="main-content">
+            <h1>Gifty</h1>
+            <mat-divider vertical></mat-divider>
+            <button [class.current]="isCurrentPage('my-lists')" [routerLink]="['/my-lists']" class="text-button">My Lists</button>
+            <button [class.current]="isCurrentPage('claimed-items')" [routerLink]="['/claimed-items']" class="text-button">Claimed Items</button>
+            <button [class.current]="isCurrentPage('groups')" [routerLink]="['/groups']" class="text-button">Groups</button>
+            <button [class.current]="isCurrentPage('friends')" [routerLink]="['/friends']" class="text-button">Friends</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="!menuOpen" class="right-card">
+        <mat-card-content class="main-content">
+            <button class="right" (click)="toggleMenu()">
+                <mat-icon class="large-button">menu</mat-icon>
+            </button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="menuOpen" class="right-card-extended">
+        <mat-card-content class="main-content">
+            <button class="right" (click)="toggleMenu()">
+                <mat-icon class="large-button">menu</mat-icon>
+            </button>
+            <button class="text-button-close" (click)="toggleMenu()"><mat-icon>close</mat-icon></button>
+        </mat-card-content>
+    </mat-card>
+</div>
+

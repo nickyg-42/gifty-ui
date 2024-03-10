@@ -37,10 +37,13 @@ export class MyListsComponent {
     if (this.dataService.getData("currentUser")) {
       this.user = this.dataService.getData("currentUser");
       this.isLoading = false;
+      
       this.getUserWishlists();
     } else {
       this.userService.getUserByEmail(this.authService.getUserEmailFromJWT()).subscribe({
         next: (data: User) => {
+          this.isLoading = false;
+
           this.user = data;
           
           this.dataService.setData("currentUser", data);
@@ -55,15 +58,17 @@ export class MyListsComponent {
   }
 
   getUserWishlists(): void {
-    if (this.dataService.getData("allWishlistsForUser")) {
-      this.wishlists = this.dataService.getData("allWishlistsForUser");
-      this.isLoading = false;
+    if (this.dataService.getData("currentUserWishlists")) {
+      this.wishlists = this.dataService.getData("currentUserWishlists")
     } else {
+      this.isLoading = true;
+
       this.wishlistService.getWishlistsByOwner(this.user.email).subscribe({
         next: (data: Wishlist[]) => {
           this.isLoading = false;
+
           this.wishlists = data;
-          this.dataService.setData("allWishlistsForUser", data);
+          this.dataService.setData("currentUserWishlists", data);
         },
         error: (error) => {
           this.isLoading = false;
@@ -81,9 +86,26 @@ export class MyListsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === "ok") {
-        this.dataService.setData("allWishlistsForUser", null);
-        this.ngOnInit();
+      if (result && result instanceof Wishlist) {
+        this.isLoading = true;
+
+        this.wishlistService.createWishlist(result).subscribe({
+          next: (createdList: Wishlist) => {
+            this.isLoading = false;
+
+            // cache result to prevent unnecessary api calls
+            this.wishlists.push(createdList);
+            this.dataService.setData("currentUserWishlists", this.wishlists);
+
+            this.snackbarService.showOk("List created successfully");
+
+            this.ngOnInit();
+          },
+          error: (error) => {
+            this.snackbarService.showErrorObject(error);
+            this.isLoading = false;
+          }
+        });
       }
     });
   }
@@ -102,13 +124,20 @@ export class MyListsComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === "ok") {
+        this.isLoading = true;
         this.wishlistService.deleteWishlist(wishlist.id!).subscribe({
           next: () => {
+            this.isLoading = false;
             this.snackbarService.showOk("Wishlist deleted successfully");
-            this.dataService.setData("allWishlistsForUser", null);
+
+            // cache result
+            this.wishlists.splice(this.wishlists.indexOf(wishlist), 1);
+            this.dataService.setData("currentUserWishlists", this.wishlists);
+
             this.ngOnInit();
           },
           error: (error) => {
+            this.isLoading = false;
             this.snackbarService.showErrorObject(error);
           }
         });

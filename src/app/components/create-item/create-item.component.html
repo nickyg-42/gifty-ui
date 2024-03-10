@@ -1,0 +1,34 @@
+<div class="main">
+    <button class="text-button" (click)="this.dialogRef.close()"><mat-icon>close</mat-icon></button>
+    <h1>Add Item</h1>
+    <form #loginForm="ngForm" (ngSubmit)="createItem()">
+        <mat-form-field>
+            <mat-label>Item Name</mat-label>
+            <input type="text" matInput placeholder="Name" [(ngModel)]="itemName" name="itemName" required>
+            <mat-error>
+              Please provide a valid name
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Item Description</mat-label>
+          <input type="text" matInput placeholder="Description" [(ngModel)]="itemDescription" name="itemDescription" required>
+          <mat-error>
+            Please provide a valid description
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Item Cost</mat-label>
+            <input type="number" matInput placeholder="Cost" [(ngModel)]="itemCost" name="itemCost" required restrictNumbers>
+            <mat-error>
+              Please provide a valid cost
+            </mat-error>
+        </mat-form-field>
+        <div class="slider">
+            <mat-label class="slider-label">Item Rating</mat-label>
+            <mat-slider class="slider-elem" discrete="true" max="5" min="0" showTickMarks="true" step="1">
+                <input matSliderThumb>
+            </mat-slider>
+        </div>
+        <button class="submit-btn" mat-raised-button color="primary" [disabled]="!loginForm.form.valid"><mat-icon>add</mat-icon>ADD ITEM</button>
+    </form>
+</div>

@@ -8,7 +8,6 @@ export class User {
     email: string = '';
     passwordHash: string = '';
     groups: Group[] = [];
-    wishlists: Wishlist[] = [];
     birthday: Date | null = null;
     role: UserRole = UserRole.Member;
     isActive: boolean = false;
